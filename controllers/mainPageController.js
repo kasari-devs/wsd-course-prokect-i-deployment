@@ -10,7 +10,7 @@ const viewStatistics = async (request) => {
         listsCount: await mainPageServices.calculateSumOfLists(),
         itemsCount: await mainPageServices.calculateSumOfItems(),
     };
-    return new Response (await renderFile ("mainPage.eta", data) , responseDetails);
+    return new Response (await renderFile ("mainpage.eta", data) , responseDetails);
 };
 
 export{ viewStatistics };
