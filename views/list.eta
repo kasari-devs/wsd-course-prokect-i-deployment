@@ -1,0 +1,35 @@
+<h1><%= it.list.name %></h1>
+<a href="/lists">Shopping lists</a>
+<h2>Add a new item</h2>
+<form action="/lists/<%= it.list.id %>/items" method="POST"  >
+    name: <input type="text" name="name" />
+    <input type="submit" value="Add item" />
+</form>
+</br>
+<h2>List items</h2>
+<ul>
+    <% if (Array.isArray(it.items)) { %>
+        <% it.items
+            .sort((a, b) => {
+                if (a.collected === b.collected) {
+                    return a.name.localeCompare(b.name);
+                }
+                return a.collected ? 1 : -1;
+            })
+            .forEach((item) => { %>
+                <li>
+                    <form action="/lists/<%= item.shopping_list_id %>/items/<%= item.id %>/collect" method="POST">
+                        <% if (item.collected === true) { %>
+                            <del><%= item.name %></del>
+                        <% } else { %>
+                            <p><%= item.name %></p>
+                        <% } %>
+                        <input type="submit" value="Mark collected!" />
+                    </form>
+                </li>
+        <% }); %>
+    <% } else { %>
+        <li>No items available</li>
+    <% } %>
+</ul>
+

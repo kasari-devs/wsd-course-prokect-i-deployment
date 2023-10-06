@@ -1,0 +1,22 @@
+<head>
+  <title>Shopping lists</title> 
+</head>
+<h1>All the shopping lists</h1>
+<h2>Add a new list</h2>
+<form action="/lists" method="POST"  >
+    name: <input type="text" name="name" />
+    <input type="submit" value="create a list" />
+</form>
+</br>
+<a href="/">Main page</a>
+<h2>Active lists</h2>
+<ul>
+<% it.lists.forEach((list) => { %>
+    <li>
+        <form action="/lists/<%= list.id %>/deactivate" method="POST" >
+            <a class="list" href="/lists/<%= list.id %>"><%= list.name %></a>
+            <input type="submit" value="Deactivate list!" />
+        </form>
+    </li>
+<% });%>
+</ul>

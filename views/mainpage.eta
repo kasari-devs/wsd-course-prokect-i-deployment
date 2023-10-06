@@ -1,0 +1,14 @@
+<h1>Shared shopping lists</h1>
+<a href="/lists">Lists</a>
+<h2>Some statistics</h2>
+<% if (Number(it.listsCount) === 0) { %>
+  <p>No shopping lists yet.</p>
+<% } else { %>
+    <p>Shopping lists: <%= it.listsCount %></p>
+  <p>Shopping list items: <%= it.itemsCount %></p>
+<% } %>
+
+
+
+
+
